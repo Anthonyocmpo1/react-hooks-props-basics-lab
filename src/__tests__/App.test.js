@@ -1,4 +1,8 @@
 import "@testing-library/jest-dom";
+import React from 'react';
+import NavBar from './NavBar';
+import Home from './Home';
+import About from './About';
 import { render, screen } from "@testing-library/react";
 
 import user from "../data/user";
@@ -44,3 +48,18 @@ test("passes 'linkedin' to <Links> as a prop, via <About>", () => {
   expect(a).toBeInTheDocument();
   expect(a.tagName).toEqual("A");
 });
+const App = () => {
+  const aboutLinks = [
+      { name: 'GitHub', url: 'https://github.com' },
+      { name: 'LinkedIn', url: 'https://linkedin.com' },
+  ];
+
+  return (
+      <div>
+          <NavBar />
+          <Home />
+          <About links={aboutLinks} />
+      </div>
+  );
+};
+export default App;
